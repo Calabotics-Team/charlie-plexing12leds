@@ -1,0 +1,116 @@
+
+
+#define sigV 7
+#define sigA 6
+#define sigL 5
+#define sidAZ 4
+void led(short led);
+void out(short pin, char state);
+
+void setup() {
+
+}
+
+void loop() {
+   for (int i=1; i<=12; i++){
+      led(i);
+      delay(555);                    
+   }
+}
+
+void out(short pin, char state)
+{
+    state == 'Z' ? pinMode(pin, INPUT) : pinMode(pin, OUTPUT);
+
+    if(state == 'H')
+        digitalWrite(pin, HIGH);
+    else if(state == 'L')
+        digitalWrite(pin, LOW);
+
+}
+
+void led(short led)
+{
+    switch(led)
+    {
+        case 1:
+            out(sigV, 'H');
+            out(sigA, 'Z');
+            out(sigL, 'Z');
+      		out(sidAZ, 'L');
+            break;
+      	 case 2:
+            out(sigV, 'H');
+            out(sigA, 'Z');
+            out(sigL, 'L');
+      		out(sidAZ, 'Z');
+            break;
+      	 case 3:
+            out(sigV, 'H');
+            out(sigA, 'L');
+            out(sigL, 'Z');
+      		out(sidAZ, 'Z');
+            break;
+      	 case 4:
+            out(sigV, 'L');
+            out(sigA, 'Z');
+            out(sigL, 'Z');
+      		out(sidAZ, 'H');
+            break;
+      	 case 5:
+            out(sigV, 'L');
+            out(sigA, 'Z');
+            out(sigL, 'H');
+      		out(sidAZ, 'Z');
+            break;
+      	 case 6:
+            out(sigV, 'L');
+            out(sigA, 'H');
+            out(sigL, 'Z');
+      		out(sidAZ, 'Z');
+            break;
+      	 case 7:
+            out(sigV, 'Z');
+            out(sigA, 'H');
+            out(sigL, 'Z');
+      		out(sidAZ, 'L');
+            break;
+      	 case 8:
+            out(sigV, 'Z');
+            out(sigA, 'H');
+            out(sigL, 'L');
+      		out(sidAZ, 'Z');
+            break;
+      	 case 9:
+            out(sigV, 'Z');
+            out(sigA, 'L');
+            out(sigL, 'Z');
+      		out(sidAZ, 'H');
+            break;
+      	 case 10:
+            out(sigV, 'Z');
+            out(sigA, 'L');
+            out(sigL, 'H');
+      		out(sidAZ, 'Z');
+            break;
+      	 case 11:
+            out(sigV, 'Z');
+            out(sigA, 'Z');
+            out(sigL, 'H');
+      		out(sidAZ, 'L');
+            break;
+      	 case 12:
+            out(sigV, 'Z');
+            out(sigA, 'Z');
+            out(sigL, 'L');
+      		out(sidAZ, 'H');
+            break;
+ 
+        default:
+            out(sigV, 'Z');
+            out(sigA, 'Z');
+            out(sigL, 'Z');
+      		out(sidAZ, 'Z');
+            break;
+    }
+}
